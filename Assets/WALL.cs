@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public class WALL : MonoBehaviour
 {
-    private Rigidbody playerRd;
-    float speed = 2.0f;
+    float speed = 30.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerRd = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -18,9 +17,11 @@ public class PlayerControl : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.LeftArrow) == true)
         {
-            //transform.Translate(Vector3.left * speed * Time.deltaTime);
-            playerRd.AddForce(0f, speed, 0f);
-
+            transform.Translate (Vector3.left*speed*Time.deltaTime);
+        }
+        if(Input.GetKey(KeyCode.RightArrow) == true)
+        {
+            transform.Translate (Vector3.right*speed*Time.deltaTime);
         }
     }
 }
