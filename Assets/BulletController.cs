@@ -13,20 +13,21 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown (0))
-        {
-            Shoot (new Vector3 (0,0,-20));
-        }
+        // if(Input.GetMouseButtonDown (0))
+        // {
+            //Shoot(new Vector3 (0,0,-2000));
+        // }
     }
     public void Shoot(Vector3 dir)
     {
         GetComponent<Rigidbody>().AddForce(dir);
     }
-    
     void OncollisionEnter(Collision coll)
     {
-        if(coll.collider.tag == "ENEMY")
+        if(coll.collider.tag == "Enemy")
         {
+            GameObject manager = GameObject.Find("ScoreManager");
+            manager.GetComponent<ScoreManager>().IncScore();
             Destroy(gameObject, 0.2f);
         }
     }
